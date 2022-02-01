@@ -2,6 +2,11 @@
 Oli, Adam, Miah and Juliette
 
 
+- DevOps: 
+- QA:
+- UX Design: Miah
+- Scrum Facilitator: Juliette
+
 ## Routes:
 - Homepage - with log in and sign up buttons
 - Log in - for existing users, redirects to newsfeed

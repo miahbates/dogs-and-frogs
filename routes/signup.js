@@ -1,3 +1,5 @@
+const auth = require("../auth");
+
 function get(request, response) {
   const html = `
   <!DOCTYPE html>
@@ -31,4 +33,23 @@ function get(request, response) {
   response.send(html);
 }
 
-module.exports = { get };
+function post(request, response) {
+  const { username, email, password } = request.body;
+  //create user calls createUserDB in the model.js file which adds the user to the DB
+  auth
+    .createUser(username, email, password)
+    .then(auth.saveUserSession)
+    .then((sid) => {
+      response.cookie("sid", sid, auth.COOKIE_OPTIONS);
+      response.redirect("/newsfeed");
+    })
+    .catch((error) => {
+      console.error(error);
+      response.send(`
+      <h1> Oh no! Something went wrong!</h1>
+      <a href="/homepage" id="return" class="button"> Back to home</a>c
+      `);
+    });
+}
+
+module.exports = { get, post };

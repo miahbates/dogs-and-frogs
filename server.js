@@ -1,7 +1,9 @@
 const express = require("express");
-const cookieParser = require("cookie-parser");
-
 const server = express();
+
+const cookieParser = require("cookie-parser");
+const bodyParser = express.urlencoded();
+
 const PORT = 3000;
 
 const staticHandler = express.static("public");
@@ -20,6 +22,9 @@ server.get("/", home.get);
 server.get("/signup", signup.get);
 server.get("/login", login.get);
 server.get("/newsfeed", newsfeed.get);
+
+//POST requests
+server.post("/signup", bodyParser, signup.post);
 
 //error handling
 server.use((request, response) => {

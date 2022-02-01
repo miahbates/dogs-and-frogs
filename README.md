@@ -7,6 +7,9 @@ Oli, Adam, Miah and Juliette
 - UX Design: Miah
 - Scrum Facilitator: Juliette
 
+## Database:
+- Databased named: petdb
+
 ## Routes:
 - Homepage - with log in and sign up buttons
 - Log in - for existing users, redirects to newsfeed

@@ -1,3 +1,5 @@
+const auth = require("../auth");
+
 function get(request, response) {
   const html = `
   <!DOCTYPE html>
@@ -29,4 +31,23 @@ function get(request, response) {
   response.send(html);
 }
 
-module.exports = { get };
+function post(request, response) {
+  const { email, password } = request.body;
+  // const sid = request.signedCookied.sid;
+  auth
+    .verifyUser(email, password)
+    .then(auth.saveUserSession)
+    .then((sid) => {
+      response.cookie("sid", sid, auth.COOKIE_OPTIONS);
+      response.redirect("/newsfeed");
+    })
+    .catch((error) => {
+      console.error(error);
+      response.send(`
+      <h1>User does not exist, please sign-up</h1>
+      <a href="/newsfeed" id="return" class="button"> Back to home</a>
+      `);
+    });
+}
+
+module.exports = { get, post };

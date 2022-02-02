@@ -25,6 +25,7 @@ server.get("/newsfeed", newsfeed.get);
 
 //POST requests
 server.post("/signup", bodyParser, signup.post);
+server.post("/login", bodyParser, login.post);
 
 //error handling
 server.use((request, response) => {

@@ -170,10 +170,9 @@ p {
 }
 
 .post {
-  margin-bottom: 20px;
+  margin: 20px;
   box-shadow: var(--box-shadow);
   padding: 10px;
-  width: 100%;
 }
 
 #post-ul {
@@ -201,6 +200,11 @@ h3,
   margin: 0;
 }
 
-/* #img-post {
-  
-} */
+@media screen and (min-width: 768px) {
+  #post-ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 50px;
+  }
+}

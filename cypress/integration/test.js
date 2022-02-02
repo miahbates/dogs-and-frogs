@@ -32,7 +32,7 @@ it("can get login page", () => {
   ).as("getLogIn");
 });
 
-it("user is redirected to newsfeed page immediately after sign up with new cookie", () => {
+it("user is redirected to a populated newsfeed page immediately after sign up with new cookie", () => {
   const username = Math.random().toString(36).slice(6);
   const email = Math.random().toString(36).slice(6);
   const password = Math.random().toString(36).slice(6);
@@ -44,6 +44,8 @@ it("user is redirected to newsfeed page immediately after sign up with new cooki
   cy.get("form").find("input[name='password']").type(`User${password}`);
   cy.get("form").find("button[type='submit']").click();
   cy.url().should("include", "/newsfeed");
+  //checks that the two initial posts have been added to page from db
+  cy.get("ul").find(".post").should("have.length", 2);
   cy.getCookie("sid").should("have.property", "httpOnly", true);
 });
 
@@ -72,6 +74,50 @@ it("user can log back in after they log out", () => {
   cy.getCookie("sid").should("have.property", "httpOnly", true);
 });
 
-it("user cannot access newsfeed without a valid cookie", () => {});
+it("user cannot access newsfeed without a valid cookie", () => {
+  cy.visit("/");
+  cy.clearCookies();
+  cy.request({
+    url: "/newsfeed",
+    failOnStatusCode: false,
+  })
+    .then((response) => {
+      return expect(response.status).to.eq(401);
+    })
+    .get("#log-in")
+    .click();
+});
 
-it("user cannot sign up with an invalid password", () => {});
+//Add when we have profile route
+// it("user cannot access profile without a valid cookie", () => {
+//   cy.visit("/");
+//   cy.clearCookies();
+//   cy.request({
+//     url: "/profile",
+//     failOnStatusCode: false,
+//   })
+//     .then((response) => {
+//       return expect(response.status).to.eq(401);
+//     })
+//     .get("#log-in")
+//     .click();
+// });
+
+it("can display 404 if page not found", () => {
+  cy.request({ url: "/page-not-found", failOnStatusCode: false }).should(
+    (response) => {
+      expect(response.status).to.eq(404);
+    }
+  );
+});
+
+it("user cannot sign up without an @sign in their email", () => {
+  cy.visit("/");
+  cy.get("#sign-up").click();
+  cy.url().should("include", "/signup");
+  cy.get("form").find("input[name='username']").type(`User99`);
+  cy.get("form").find("input[name='email']").type(`noAtsignInEmail.com`);
+  cy.get("form").find("input[name='password']").type(`nkwnhthtskf`);
+  cy.get("form").find("button[type='submit']").click();
+  cy.url().should("include", "/");
+});

@@ -47,7 +47,18 @@ function getAllposts() {
   });
 }
 
+function addPosts(animal_name, description, type) {
+  const ADD_POSTS = `
+  INSERT INTO posts (animal_name, description, type) VALUES ($1,$2,$3) RETURNING animal_name, description, type`;
+  return db
+    .query(ADD_POSTS, [animal_name, description, type])
+    .then((result) => {
+      return result.rows[0];
+    });
+}
+
 module.exports = {
+  addPosts,
   createUserDB,
   createSession,
   getUser,

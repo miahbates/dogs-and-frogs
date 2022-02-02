@@ -18,6 +18,7 @@ const newsfeed = require("./routes/newsfeed");
 const error = require("./routes/newsfeed");
 const signout = require("./routes/signout");
 const middleware = require("./middleware");
+const addPosts = require("./routes/addposts");
 
 //GET requests
 server.get("/", home.get);
@@ -29,6 +30,8 @@ server.get("/newsfeed", middleware.checkAuth, newsfeed.get);
 server.post("/signup", bodyParser, signup.post);
 server.post("/login", bodyParser, login.post);
 server.post("/signout", bodyParser, signout.post);
+server.post("/addposts", bodyParser, addPosts.post);
+
 //error handling
 server.use((request, response) => {
   const htmlError = `<!DOCTYPE html>

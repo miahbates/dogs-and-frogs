@@ -47,7 +47,7 @@ it("user is redirected to newsfeed page immediately after sign up with new cooki
   cy.getCookie("sid").should("have.property", "httpOnly", true);
 });
 
-it("user can log in after they have made account", () => {
+it("user can log back in after they log out", () => {
   const username = Math.random().toString(36).slice(6);
   const email = Math.random().toString(36).slice(6);
   const password = Math.random().toString(36).slice(6);
@@ -60,14 +60,8 @@ it("user can log in after they have made account", () => {
   cy.get("form").find("button[type='submit']").click();
   cy.url().should("include", "/newsfeed");
 
-  cy.getCookie("sid").should("have.property", "httpOnly", true);
-
-  //remove cookie and then try to log in
-  cy.clearCookies();
-
-  cy.visit("/");
-  cy.get("#log-in").click();
-  cy.url().should("include", "/login");
+  cy.get("form").find("#log-out").click();
+  cy.url().should("include", "/");
 
   cy.get("form").find("input[name='email']").type(`${email}@gmail.com`);
   cy.get("form").find("input[name='password']").type(`User${password}`);

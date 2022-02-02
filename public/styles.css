@@ -28,7 +28,7 @@ body {
 
 h1 {
   /* background-color: var(--color-two); */
-  font-size: 4.5rem;
+  font-size: 4.2rem;
   text-align: center;
   color: var(--color-five);
   text-shadow: 1px 1px 1px black;
@@ -37,6 +37,7 @@ h1 {
   font-family: var(--heading-font);
   box-shadow: var(--box-shadow);
   border-radius: 5px;
+  max-width: 80%;
 }
 
 .link {
@@ -102,7 +103,7 @@ h2 {
   text-shadow: 1px 1px 1px black;
   padding: 5px;
   font-family: var(--body-font);
-  margin-top: 0;
+  margin: 0 auto;
 }
 
 form > input {
@@ -111,6 +112,25 @@ form > input {
   box-shadow: var(--box-shadow);
   border: none;
 }
+
+form > input:hover,
+form > input:focus {
+  border: solid 2px var(--color-four);
+  cursor: pointer;
+}
+
+form > select {
+  padding: 10px 50px;
+  box-shadow: var(--box-shadow);
+  margin: 8px;
+}
+
+form > select:hover,
+form > select:focus {
+  border: var(--color-four);
+  cursor: pointer;
+}
+
 form > label {
   margin: 2px;
   font-family: var(--body-font);
@@ -124,6 +144,24 @@ p {
   color: var(--color-six);
 }
 
-/* #sign-up-header {
-  margin: 20px;
-} */
+#log-out {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 5px;
+}
+
+#addPosts {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.fa-plus {
+  font-size: 1.5rem;
+  margin-left: 5px;
+  color: var(--color-six);
+}
+
+.add-post {
+  padding: 10px 50px;
+}

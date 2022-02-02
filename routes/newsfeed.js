@@ -27,17 +27,28 @@ async function get(request, response) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dog or Frog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/288a4a188a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/styles.css" />
   </head>
   <body>
-    <form action="/signout" method="POST">
-      <button class="button" type="submit" id="log-out" >Log Out</button>
+  <section>
+    <form action="/signout" method="POST" id="log-out">
+      <button class="link" type="submit" id="log-out" >Log Out</button>
     </form>
-
-      <h1>Frog or Dog Newsfeed</h1>
+    </section>
+    <section class="column">
+    <img src="../images/logo.png" alt="dog and frog logo" id="logo">
+      <h1>Dogs and Frogs</h1>
+      <h2>Newsfeed</h2>
+      <p>Add a post<span class="fas fa-plus"></span></p>
 
       <form action="/addposts" method="POST" id="addPosts" class="column">
-      <label for="upload-img">Add image</label>
 
       <label for="type">Dog or Frog?</label>
       <select name="type" id="type">
@@ -47,13 +58,18 @@ async function get(request, response) {
         </optgroup>
       </select>
 
+      <label for="upload-img">Add image</label>
+      <input type="text" name="img-placeholder" placeholder="image upload here..." required />
+
+
+
 <label for="animal_name">Animal name</label>
 <input type="text" name="animal_name" id="description" required />
 
 <label for="description">Description</label>
 <input type="text" name="description" id="description" required />
 
-      <button class="link">Add post!</button>
+      <button class="link add-post">Add post!</button>
     </form>
       <section>
       <ul>${allListElems}</ul>

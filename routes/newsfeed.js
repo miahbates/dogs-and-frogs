@@ -10,7 +10,7 @@ function get(request, response) {
     <link rel="stylesheet" type="text/css" href="/styles.css" />
   </head>
   <body>
-    <form action="/logout" method="POST">
+    <form action="/signout" method="POST">
       <button id="log-out" class="button" type="submit">Log Out</button>
     </form>
     <section>

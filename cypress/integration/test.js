@@ -63,6 +63,7 @@ it("user can log back in after they log out", () => {
   cy.get("form").find("#log-out").click();
   cy.url().should("include", "/");
 
+  cy.get("#log-in").click();
   cy.get("form").find("input[name='email']").type(`${email}@gmail.com`);
   cy.get("form").find("input[name='password']").type(`User${password}`);
   cy.get("form").find("button[type='submit']").click();

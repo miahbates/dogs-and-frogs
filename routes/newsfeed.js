@@ -1,4 +1,24 @@
-function get(request, response) {
+const db = require("../database/connection");
+const model = require("../database/model");
+
+async function get(request, response) {
+  //db query to get all posts
+  const allposts = await model.getAllposts().then((result) => {
+    return result;
+  });
+
+  const allListElems = allposts
+    .map((post) => {
+      //add hidden input in delete post form
+      return `<li class="post"><h3>${post["animal_name"]}</h3><p>${post.type}</p><img src="https://iconarchive.com/download/i107326/google/noto-emoji-animals-nature/22215-dog.ico" alt="A ${post.type} called ${post["animal_name"]}"><p>${post.description}</p></li>`;
+    })
+    .reverse()
+    .join("");
+
+  //model.getAllposts()
+  //map over all items and insert into ul as li
+
+  // const allposts = "allposts";
   const html = `
   <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +35,7 @@ function get(request, response) {
     </form>
     <section>
       <h1>Frog or Dog Newsfeed</h1>
-      <ul></ul>
+      <ul>${allListElems}</ul>
     </section>
   </body>
 </html>

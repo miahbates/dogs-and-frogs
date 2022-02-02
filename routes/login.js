@@ -9,12 +9,20 @@ function get(request, response) {
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Dog or Frog</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@200&display=swap"
+        rel="stylesheet"
+      />
     <link rel="stylesheet" type="text/css" href="/styles.css">
     </head>
     <body>
-      <section>
-        <h1>Login</h1>
-        <form action="/login" method="POST">
+      <section class="column">
+      <img src="../images/logo.png" alt="dog and frog logo" id="logo">
+        <h1>Dogs and Frogs</h1>
+        <h2>Login</h2>
+        <form action="/login" method="POST class="column">
           <label for="email">Email<span aria-hidden="true">*</span></label>
           <input type="email" name="email" required />
           <label for="password">Password<span aria-hidden="true">*</span></label>

@@ -29,7 +29,7 @@ function get(request, response) {
       <input type="email" name="email" required />
       <label for="password">Password<span aria-hidden="true">*</span></label>
       <input type="password" name="password" required />
-      <button id="sign-up" type="submit">Sign up!</button>
+      <button id="sign-up" class="link" type="submit">Sign up!</button>
     </form>
     <p>Signed up already? Log in below with your details...</p>
     <a href="/login" id="log-in" class="link"> Log in</a>

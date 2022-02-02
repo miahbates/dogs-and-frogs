@@ -22,15 +22,15 @@ function get(request, response) {
       <img src="../images/logo.png" alt="dog and frog logo" id="logo">
         <h1>Dogs and Frogs</h1>
         <h2>Login</h2>
-        <form action="/login" method="POST class="column">
+        <form action="/login" method="POST" class="column">
           <label for="email">Email<span aria-hidden="true">*</span></label>
           <input type="email" name="email" required />
           <label for="password">Password<span aria-hidden="true">*</span></label>
           <input type="password" name="password" required />
-          <button type="submit">Log in!</button>
+          <button class="link" id="log-in" type="submit">Log in!</button>
         </form>
         <p>Haven't signed up yet? It only takes 10 seconds!</p>
-        <a href="/signup" id="sign-in" class="button">Sign up</a>
+        <a href="/signup" id="sign-up" class="button link">Sign up</a>
       </section>
     </body>
   </html>

@@ -10,7 +10,7 @@ async function get(request, response) {
   const allListElems = allposts
     .map((post) => {
       //add hidden input in delete post form
-      return `<li class="post"><h3>${post["animal_name"]}</h3><p>${post.type}</p><img src="https://iconarchive.com/download/i107326/google/noto-emoji-animals-nature/22215-dog.ico" alt="A ${post.type} called ${post["animal_name"]}"><p>${post.description}</p></li>`;
+      return `<li class="post"><div class="space-between"><h3>${post["animal_name"]}</h3><p id="animal-type">${post.type}</p></div><img id="img-post" src="https://iconarchive.com/download/i107326/google/noto-emoji-animals-nature/22215-dog.ico" alt="A ${post.type} called ${post["animal_name"]}"><p>${post.description}</p></li>`;
     })
     .reverse()
     .join("");
@@ -46,20 +46,20 @@ async function get(request, response) {
     <img src="../images/logo.png" alt="dog and frog logo" id="logo">
       <h1>Dogs and Frogs</h1>
       <h2>Newsfeed</h2>
-      <p>Add a post<span class="fas fa-plus"></span></p>
+      <p>Share your posts with us!</p>
 
       <form action="/addposts" method="POST" id="addPosts" class="column">
 
       <label for="type">Dog or Frog?</label>
       <select name="type" id="type">
         <optgroup label="animal">
-          <option value="dog">Dog</option>
-          <option value="frog">Frog</option>
+          <option value="Dog">Dog</option>
+          <option value="Frog">Frog</option>
         </optgroup>
       </select>
 
       <label for="upload-img">Add image</label>
-      <input type="text" name="img-placeholder" placeholder="image upload here..." required />
+      <input type="text" name="img-placeholder" placeholder="image upload here..." />
 
 
 
@@ -69,10 +69,10 @@ async function get(request, response) {
 <label for="description">Description</label>
 <input type="text" name="description" id="description" required />
 
-      <button class="link add-post">Add post!</button>
+      <button class="link add-post">Add post!<span class="fas fa-plus"></span></button>
     </form>
-      <section>
-      <ul>${allListElems}</ul>
+      <section id="post">
+      <ul class="column" id="post-ul">${allListElems}</ul>
     </section>
   </body>
 </html>

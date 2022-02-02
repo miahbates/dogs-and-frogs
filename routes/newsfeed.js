@@ -11,7 +11,7 @@ function get(request, response) {
   </head>
   <body>
     <form action="/signout" method="POST">
-      <button class="button" type="submit" id="log-out">Log Out</button>
+      <button id="log-out" class="button" type="submit">Log Out</button>
     </form>
     <section>
       <h1>Frog or Dog Newsfeed</h1>

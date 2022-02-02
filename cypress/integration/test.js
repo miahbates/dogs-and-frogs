@@ -71,3 +71,7 @@ it("user can log back in after they log out", () => {
   cy.url().should("include", "/newsfeed");
   cy.getCookie("sid").should("have.property", "httpOnly", true);
 });
+
+it("user cannot access newsfeed without a valid cookie", () => {});
+
+it("user cannot sign up with an invalid password", () => {});

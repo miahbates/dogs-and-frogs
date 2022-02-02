@@ -32,7 +32,7 @@ it("can get login page", () => {
   ).as("getLogIn");
 });
 
-it("user is redirected to newsfeed page immediately after sign up", () => {
+it("user is redirected to newsfeed page immediately after sign up with new cookie", () => {
   const username = Math.random().toString(36).slice(6);
   const email = Math.random().toString(36).slice(6);
   const password = Math.random().toString(36).slice(6);
@@ -44,4 +44,5 @@ it("user is redirected to newsfeed page immediately after sign up", () => {
   cy.get("form").find("input[name='password']").type(`User${password}`);
   cy.get("form").find("button[type='submit']").click();
   cy.url().should("include", "/newsfeed");
+  cy.getCookie("sid").should("have.property", "httpOnly", true);
 });

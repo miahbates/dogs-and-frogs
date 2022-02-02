@@ -12,7 +12,7 @@ function post(request, response) {
       console.error(error);
       response.send(`
       <h1> Oh no! Something went wrong!</h1>
-      <a href="/homepage" id="return" class="button"> Back to home</a>
+      <a href="/" id="return" class="button"> Back to home</a>
       `);
     });
 }

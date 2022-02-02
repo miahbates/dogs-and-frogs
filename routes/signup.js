@@ -10,21 +10,29 @@ function get(request, response) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dog or Frog</title>
     <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@200&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <section>
-    <h1>Sign up</h1>
-    <form action="/signup" method="POST">
+    <section class="column">
+    <img src="../images/logo.png" alt="dog and frog logo" id="logo">
+    <h1>Dogs and Frogs</h1>
+    <h2>Sign up</h2>
+    <form action="/signup" method="POST" class="column">
       <label for="username">Username<span aria-hidden="true">*</span></label>
       <input type="text" name="username" required />
       <label for="email">Email<span aria-hidden="true">*</span></label>
       <input type="email" name="email" required />
       <label for="password">Password<span aria-hidden="true">*</span></label>
       <input type="password" name="password" required />
-      <button type="submit">Sign up!</button>
+      <button id="sign-up" class="link" type="submit">Sign up!</button>
     </form>
     <p>Signed up already? Log in below with your details...</p>
-    <a href="/login" id="log-in" class="button"> Log in</a>
+    <a href="/login" id="log-in" class="link"> Log in</a>
     </section>
   </body>
 </html>

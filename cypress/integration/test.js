@@ -49,31 +49,6 @@ it("user is redirected to a populated newsfeed page immediately after sign up wi
   cy.getCookie("sid").should("have.property", "httpOnly", true);
 });
 
-it("user can log back in after they log out", () => {
-  const username = Math.random().toString(36).slice(6);
-  const email = Math.random().toString(36).slice(6);
-  const password = Math.random().toString(36).slice(6);
-  cy.visit("/");
-  cy.get("#sign-up").click();
-  cy.url().should("include", "/signup");
-  cy.get("form").find("input[name='username']").type(`User${username}`);
-  cy.get("form").find("input[name='email']").type(`${email}@gmail.com`);
-  cy.get("form").find("input[name='password']").type(`User${password}`);
-  cy.get("form").find("button[type='submit']").click();
-  cy.url().should("include", "/newsfeed");
-
-  cy.get("form").find("#log-out").click();
-  cy.url().should("include", "/");
-
-  cy.get("#log-in").click();
-  cy.get("form").find("input[name='email']").type(`${email}@gmail.com`);
-  cy.get("form").find("input[name='password']").type(`User${password}`);
-  cy.get("form").find("button[type='submit']").click();
-
-  cy.url().should("include", "/newsfeed");
-  cy.getCookie("sid").should("have.property", "httpOnly", true);
-});
-
 it("user cannot access newsfeed without a valid cookie", () => {
   cy.visit("/");
   cy.clearCookies();
@@ -120,4 +95,30 @@ it("user cannot sign up without an @sign in their email", () => {
   cy.get("form").find("input[name='password']").type(`nkwnhthtskf`);
   cy.get("form").find("button[type='submit']").click();
   cy.url().should("include", "/");
+});
+
+it("user can log back in after they log out", () => {
+  const username = Math.random().toString(36).slice(6);
+  const email = Math.random().toString(36).slice(6);
+  const password = Math.random().toString(36).slice(6);
+  cy.visit("/");
+  cy.get("#sign-up").click();
+  cy.url().should("include", "/signup");
+  cy.get("form").find("input[name='username']").type(`User${username}`);
+  cy.get("form").find("input[name='email']").type(`${email}@gmail.com`);
+  cy.get("form").find("input[name='password']").type(`User${password}`);
+  cy.get("form").find("button[type='submit']").click();
+  cy.url().should("include", "/newsfeed");
+
+  cy.get("form").find("#log-out").click();
+  cy.url().should("include", "/");
+
+  cy.wait(10000);
+  cy.get("#log-in").click();
+  cy.get("form").find("input[name='email']").type(`${email}@gmail.com`);
+  cy.get("form").find("input[name='password']").type(`User${password}`);
+  cy.get("form").find("button[type='submit']").click();
+
+  cy.url().should("include", "/newsfeed");
+  cy.getCookie("sid").should("have.property", "httpOnly", true);
 });

@@ -16,4 +16,14 @@ function createSession(sid, userInfo) {
   });
 }
 
-module.exports = { createUserDB, createSession };
+function getUser(email) {
+  const SELECT_USER = `
+  SELECT id, username, email, password FROM users WHERE email=$1`;
+  return db.query(SELECT_USER, [email]).then((result) => {
+    console.log("result", result.rows);
+    console.log("result with 0", result.rows[0]);
+    return result.rows[0];
+  });
+}
+
+module.exports = { createUserDB, createSession, getUser };

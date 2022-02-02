@@ -40,10 +40,18 @@ function getSessionInfo(sid) {
   });
 }
 
+function getAllposts() {
+  const GET_ALL_POSTS = "SELECT * FROM posts";
+  return db.query(GET_ALL_POSTS).then((result) => {
+    return result.rows;
+  });
+}
+
 module.exports = {
   createUserDB,
   createSession,
   getUser,
   deleteCurSession,
   getSessionInfo,
+  getAllposts,
 };

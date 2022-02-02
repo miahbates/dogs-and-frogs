@@ -1,3 +1,5 @@
+const auth = require("registry-auth-token");
+
 function get(request, response) {
   const html = `
   <!DOCTYPE html>
@@ -28,5 +30,12 @@ function get(request, response) {
 
   response.send(html);
 }
+
+// function post(request, response) {
+//   const {email, password} = request.body;
+//   const sid = request.signedCookied.sid;
+//   auth
+//     .verifyUser(email, password)
+// }
 
 module.exports = { get };

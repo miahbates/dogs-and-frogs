@@ -26,4 +26,10 @@ function getUser(email) {
   });
 }
 
-module.exports = { createUserDB, createSession, getUser };
+function deleteCurSession(sid) {
+  const DELETE_SESSION = `
+    DELETE FROM sessions WHERE sid = $1`;
+  return db.query(DELETE_SESSION, [sid]);
+}
+
+module.exports = { createUserDB, createSession, getUser, deleteCurSession };

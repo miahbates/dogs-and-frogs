@@ -16,6 +16,7 @@ const signup = require("./routes/signup");
 const login = require("./routes/login");
 const newsfeed = require("./routes/newsfeed");
 const error = require("./routes/newsfeed");
+const signout = require("./routes/signout");
 
 //GET requests
 server.get("/", home.get);
@@ -26,6 +27,7 @@ server.get("/newsfeed", newsfeed.get);
 //POST requests
 server.post("/signup", bodyParser, signup.post);
 server.post("/login", bodyParser, login.post);
+server.post("/signout", bodyParser, signout.post);
 
 //error handling
 server.use((request, response) => {

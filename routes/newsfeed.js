@@ -33,8 +33,29 @@ async function get(request, response) {
     <form action="/signout" method="POST">
       <button class="button" type="submit" id="log-out" >Log Out</button>
     </form>
-    <section>
+
       <h1>Frog or Dog Newsfeed</h1>
+
+      <form action="/addposts" method="POST" id="addPosts" class="column">
+      <label for="upload-img">Add image</label>
+
+      <label for="type">Dog or Frog?</label>
+      <select name="type" id="type">
+        <optgroup label="animal">
+          <option value="dog">Dog</option>
+          <option value="frog">Frog</option>
+        </optgroup>
+      </select>
+
+<label for="animal_name">Animal name</label>
+<input type="text" name="animal_name" id="description" required />
+
+<label for="description">Description</label>
+<input type="text" name="description" id="description" required />
+
+      <button class="link">Add post!</button>
+    </form>
+      <section>
       <ul>${allListElems}</ul>
     </section>
   </body>

@@ -32,4 +32,18 @@ function deleteCurSession(sid) {
   return db.query(DELETE_SESSION, [sid]);
 }
 
-module.exports = { createUserDB, createSession, getUser, deleteCurSession };
+function getSessionInfo(sid) {
+  const CURRENT_SESSION = `
+    SELECT user_info FROM sessions WHERE sid =$1`;
+  return db.query(CURRENT_SESSION, [sid]).then((result) => {
+    return result.rows[0];
+  });
+}
+
+module.exports = {
+  createUserDB,
+  createSession,
+  getUser,
+  deleteCurSession,
+  getSessionInfo,
+};

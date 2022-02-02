@@ -17,18 +17,18 @@ const login = require("./routes/login");
 const newsfeed = require("./routes/newsfeed");
 const error = require("./routes/newsfeed");
 const signout = require("./routes/signout");
+const middleware = require("./middleware");
 
 //GET requests
 server.get("/", home.get);
 server.get("/signup", signup.get);
 server.get("/login", login.get);
-server.get("/newsfeed", newsfeed.get);
+server.get("/newsfeed", middleware.checkAuth, newsfeed.get);
 
 //POST requests
 server.post("/signup", bodyParser, signup.post);
 server.post("/login", bodyParser, login.post);
 server.post("/signout", bodyParser, signout.post);
-
 //error handling
 server.use((request, response) => {
   const htmlError = `<!DOCTYPE html>

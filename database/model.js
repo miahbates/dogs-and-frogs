@@ -57,6 +57,13 @@ function addPosts(animal_name, description, type, image) {
     });
 }
 
+function getPostImage(id) {
+  const GET_IMG_BY_ID = `SELECT image FROM posts WHERE id = $1`;
+  return db.query(GET_IMG_BY_ID, [id]).then((result) => {
+    return result.rows[0];
+  });
+}
+
 module.exports = {
   addPosts,
   createUserDB,
@@ -65,4 +72,5 @@ module.exports = {
   deleteCurSession,
   getSessionInfo,
   getAllposts,
+  getPostImage,
 };

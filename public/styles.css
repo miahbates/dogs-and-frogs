@@ -128,7 +128,7 @@ form > select {
 
 form > select:hover,
 form > select:focus {
-  border: var(--color-four);
+  border: 2px solid var(--color-four);
   cursor: pointer;
 }
 

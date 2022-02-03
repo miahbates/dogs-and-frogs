@@ -30,7 +30,7 @@ server.get("/signup", signup.get);
 server.get("/login", login.get);
 server.get("/newsfeed", middleware.checkAuth, newsfeed.get);
 server.get("/posts/:id/image", getimage.get);
-server.get("/profile", profile.get);
+// server.get("/profile", profile.get);
 
 //POST requests
 server.post("/signup", bodyParser, signup.post);

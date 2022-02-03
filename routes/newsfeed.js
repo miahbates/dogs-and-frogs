@@ -61,6 +61,8 @@ async function get(request, response) {
       <input type="radio" class='choice' id="frogs" name="type" value='frog' />
       <label for="dogs">Dogs</label>
       <input type="radio" class='choice' id="dogs" name='type' value='dog' checked/>
+      <label for="all_animals">All animals</label>
+      <input type="radio" class='choice' id="all_animals" name='type' value='all_animals' checked/>
       </form>
       <h2>Newsfeed</h2>
       <p>Share your posts with us!</p>  

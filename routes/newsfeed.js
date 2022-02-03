@@ -48,6 +48,11 @@ async function get(request, response) {
       <button class="link" type="submit" id="log-out" >Log Out</button>
     </form>
     </section>
+      <section>
+    <form action="/profile" method="POST" id="profile">
+      <button class="link" type="submit" id="profile" >Profile</button>
+    </form>
+    </section>
     <section class="column">
     <img src="../images/logo.png" alt="dog and frog logo" id="logo">
       <h1>Dogs and Frogs</h1>

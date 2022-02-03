@@ -13,7 +13,12 @@ async function get(request, response) {
   const allListElems = profilePosts.map((post) => {
     return `<li class="post"><div class="space-between"><h3>${post["animal_name"]}</h3><p id="animal-type">${post.type}</p></div>
     <img id="img-post" src="/posts/${post.id}/image" alt="A ${post.type} called ${post["animal_name"]}">
-    <p>${post.description}</p></li>`;
+    <p>${post.description}</p>
+    <form action="/deletepost" method="POST">
+    <input type="hidden" name="postID" value="${post.id}"/>
+    <button type="submit">Delete</button>
+    </form>
+    </li>`;
   });
 
   const html = `
@@ -42,7 +47,7 @@ async function get(request, response) {
     <section class="column">
     <img src="../images/logo.png" alt="dog and frog logo" id="logo">
       <h1>Dogs and Frogs</h1>
-      <h2>username</h2>
+      <h2>Your profile</h2>
       <section id="post">
       <ul class="column" id="post-ul">${allListElems}</ul>
     </section>

@@ -71,6 +71,11 @@ function getProfilePosts(id) {
   });
 }
 
+function deletePost(postID) {
+  const DELETE_POST = `DELETE FROM posts WHERE id = $1`;
+  return db.query(DELETE_POST, [postID]);
+}
+
 module.exports = {
   addPosts,
   createUserDB,
@@ -81,4 +86,5 @@ module.exports = {
   getAllposts,
   getPostImage,
   getProfilePosts,
+  deletePost,
 };

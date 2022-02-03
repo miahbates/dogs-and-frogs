@@ -23,6 +23,7 @@ const middleware = require("./middleware");
 const addPosts = require("./routes/addposts");
 const getimage = require("./routes/getimage");
 const profile = require("./routes/profile");
+const deletepost = require("./routes/deletepost");
 
 //GET requests
 server.get("/", home.get);
@@ -42,6 +43,7 @@ server.post(
   imageUpload.single("image"),
   addPosts.post
 );
+server.post("/deletepost", middleware.checkAuth, bodyParser, deletepost.post);
 
 //error handling
 server.use((request, response) => {

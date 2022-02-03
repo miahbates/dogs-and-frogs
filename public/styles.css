@@ -28,7 +28,7 @@ body {
 
 h1 {
   /* background-color: var(--color-two); */
-  font-size: 4.5rem;
+  font-size: 4.2rem;
   text-align: center;
   color: var(--color-five);
   text-shadow: 1px 1px 1px black;
@@ -37,6 +37,7 @@ h1 {
   font-family: var(--heading-font);
   box-shadow: var(--box-shadow);
   border-radius: 5px;
+  max-width: 80%;
 }
 
 .link {
@@ -48,7 +49,7 @@ h1 {
   cursor: pointer;
   display: inline-block;
   font-family: var(--body-font);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 20px;
   list-style: none;
   margin: 10px 8px;
@@ -102,7 +103,7 @@ h2 {
   text-shadow: 1px 1px 1px black;
   padding: 5px;
   font-family: var(--body-font);
-  margin-top: 0;
+  margin: 0 auto;
 }
 
 form > input {
@@ -111,6 +112,26 @@ form > input {
   box-shadow: var(--box-shadow);
   border: none;
 }
+
+form > input:hover,
+form > input:focus {
+  border: solid 2px var(--color-four);
+  cursor: pointer;
+}
+
+form > select {
+  padding: 10px 50px;
+  box-shadow: var(--box-shadow);
+  margin: 8px;
+  text-align: center;
+}
+
+form > select:hover,
+form > select:focus {
+  border: 2px solid var(--color-four);
+  cursor: pointer;
+}
+
 form > label {
   margin: 2px;
   font-family: var(--body-font);
@@ -124,6 +145,67 @@ p {
   color: var(--color-six);
 }
 
-/* #sign-up-header {
+#log-out {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 5px;
+}
+
+#addPosts {
+  margin: 0 auto;
+}
+
+.fa-plus {
+  font-size: 1.5rem;
+  margin-left: 5px;
+  color: white;
+}
+
+.add-post {
+  padding: 10px 40px;
+}
+
+#img-post {
+  height: 100%;
+}
+
+.post {
   margin: 20px;
-} */
+  box-shadow: var(--box-shadow);
+  padding: 10px;
+}
+
+#post-ul {
+  list-style: none;
+  padding: 10px;
+}
+
+h3,
+#animal-type {
+  font-size: 2rem;
+  text-align: center;
+  color: white;
+  background-color: var(--color-four);
+  padding: 5px;
+  font-family: var(--heading-font);
+  margin: 0;
+  border-radius: 5px;
+}
+
+.space-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  #post-ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 50px;
+  }
+}

@@ -46,13 +46,13 @@ function getAllposts() {
     return result.rows;
   });
 }
-
-function addPosts(animal_name, description, type, image) {
+function addPosts(animal_name, description, type, image, id) {
   const ADD_POSTS = `
-  INSERT INTO posts (animal_name, description, type, image) VALUES ($1,$2,$3,$4) RETURNING animal_name, description, type, image`;
+  INSERT INTO posts (animal_name, description, type, image, id) VALUES ($1,$2,$3,$4,$5) RETURNING animal_name, description, type, image, id`;
   return db
-    .query(ADD_POSTS, [animal_name, description, type, image])
+    .query(ADD_POSTS, [animal_name, description, type, image, id])
     .then((result) => {
+      // console.log("result row", result.rows[0]);
       return result.rows[0];
     });
 }

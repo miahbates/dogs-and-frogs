@@ -209,3 +209,7 @@ h3,
     margin: 50px;
   }
 }
+
+.hidden {
+  display: none;
+}

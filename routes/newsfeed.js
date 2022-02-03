@@ -51,16 +51,23 @@ async function get(request, response) {
     <section class="column">
     <img src="../images/logo.png" alt="dog and frog logo" id="logo">
       <h1>Dogs and Frogs</h1>
+      <form action="/newsfeed" id="filter_animals" method="POST">
+      <label for="frogs">Frogs</label>
+      <input type="radio" class='choice' id="frogs" name="type" value='frog' />
+      <label for="dogs">Dogs</label>
+      <input type="radio" class='choice' id="dogs" name='type' value='dog' checked/>
+      </form>
       <h2>Newsfeed</h2>
-      <p>Share your posts with us!</p>
+      <p>Share your posts with us!</p>  
+     
 
       <form enctype="multipart/form-data" action="/addposts" method="POST" id="addPosts" class="column">
 
       <label for="type">Dog or Frog?</label>
       <select name="type" id="type">
         <optgroup label="animal">
-          <option value="Dog">Dog</option>
-          <option value="Frog">Frog</option>
+          <option value="dog">dog</option>
+          <option value="frog">frog</option>
         </optgroup>
       </select>
 
@@ -80,7 +87,9 @@ async function get(request, response) {
       <section id="post">
       <ul class="column" id="post-ul">${allListElems}</ul>
     </section>
+    <script src="filter.js"></script>
   </body>
+  
 </html>
   
   `;

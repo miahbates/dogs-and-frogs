@@ -11,7 +11,7 @@ function checkAuth(request, response, next) {
     if (!userInfo) {
       response.status(401).send(`
         <h1>Please log in to view this page</h1>
-        <a href="/homepage" id="return" class="button"> Back to home</a>`);
+        <a href="/" id="return" class="button"> Back to home</a>`);
     } else {
       next();
     }

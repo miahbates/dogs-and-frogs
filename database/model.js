@@ -47,14 +47,21 @@ function getAllposts() {
   });
 }
 
-function addPosts(animal_name, description, type) {
+function addPosts(animal_name, description, type, image) {
   const ADD_POSTS = `
-  INSERT INTO posts (animal_name, description, type) VALUES ($1,$2,$3) RETURNING animal_name, description, type`;
+  INSERT INTO posts (animal_name, description, type, image) VALUES ($1,$2,$3,$4) RETURNING animal_name, description, type, image`;
   return db
-    .query(ADD_POSTS, [animal_name, description, type])
+    .query(ADD_POSTS, [animal_name, description, type, image])
     .then((result) => {
       return result.rows[0];
     });
+}
+
+function getPostImage(id) {
+  const GET_IMG_BY_ID = `SELECT image FROM posts WHERE id = $1`;
+  return db.query(GET_IMG_BY_ID, [id]).then((result) => {
+    return result.rows[0];
+  });
 }
 
 module.exports = {
@@ -65,4 +72,5 @@ module.exports = {
   deleteCurSession,
   getSessionInfo,
   getAllposts,
+  getPostImage,
 };

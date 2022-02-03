@@ -22,7 +22,6 @@ function saveUserSession(user) {
 
 function verifyUser(email, password) {
   return model.getUser(email).then((user) => {
-    console.log(user);
     // return here? who knows?
     return bcrypt.compare(password, user.password).then((match) => {
       if (!match) {

@@ -49,9 +49,7 @@ async function get(request, response) {
     </form>
     </section>
       <section>
-    <form action="/profile" method="POST" id="profile">
-      <button class="link" type="submit" id="profile" >Profile</button>
-    </form>
+      <a class="link" href="/profile" id="profile">Profile</a>
     </section>
     <section class="column">
     <img src="../images/logo.png" alt="dog and frog logo" id="logo">

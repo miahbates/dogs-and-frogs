@@ -30,7 +30,7 @@ server.get("/signup", signup.get);
 server.get("/login", login.get);
 server.get("/newsfeed", middleware.checkAuth, newsfeed.get);
 server.get("/posts/:id/image", getimage.get);
-server.get("/profile", profile.get);
+server.get("/profile", middleware.checkAuth, profile.get);
 
 //POST requests
 server.post("/signup", bodyParser, signup.post);
@@ -42,7 +42,6 @@ server.post(
   imageUpload.single("image"),
   addPosts.post
 );
-// server.post("/profile", profile.post);
 
 //error handling
 server.use((request, response) => {

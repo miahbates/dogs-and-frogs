@@ -2,9 +2,26 @@ const model = require("../database/model.js");
 
 function post(request, response) {
   const { animal_name, description, type } = request.body;
-  console.log("request body", request.body);
-  model.addPosts(animal_name, description, type);
-  response.redirect("/newsfeed");
+  // get session info
+  const sid = request.signedCookies.sid;
+  model.getSessionInfo(sid).then((result) => {
+    console.log("result", result);
+    const id = result["user_info"].user.id;
+    // console.log("username", username);
+    return model
+      .addPosts(animal_name, description, type, id)
+      .then(() => {
+        response.redirect("/newsfeed");
+      })
+      .catch((error) => {
+        console.log(error);
+        response.status(404);
+      });
+  });
 }
+
+// console.log("result", result);
+// username = result["user_info"].user.username;
+// console.log(username, "username");
 
 module.exports = { post };

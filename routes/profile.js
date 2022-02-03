@@ -10,6 +10,8 @@ async function get(request, response) {
     return result;
   });
 
+  let profileName = "";
+
   const allListElems = profilePosts.map((post) => {
     return `<li class="post"><div class="space-between"><h3>${post["animal_name"]}</h3><p id="animal-type">${post.type}</p></div>
     <div class="column"><img id="img-post" src="/posts/${post.id}/image" alt="A ${post.type} called ${post["animal_name"]}"></div>
@@ -48,7 +50,7 @@ async function get(request, response) {
     <section class="column">
     <img src="../images/logo.png" alt="dog and frog logo" id="logo">
       <h1>Dogs and Frogs</h1>
-      <h2>Your profile</h2>
+      <h2>Profile</h2>
       <section id="post">
       <ul class="column" id="post-ul">${allListElems}</ul>
     </section>

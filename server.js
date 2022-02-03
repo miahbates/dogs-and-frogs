@@ -23,6 +23,7 @@ const middleware = require("./middleware");
 const addPosts = require("./routes/addposts");
 const getimage = require("./routes/getimage");
 const profile = require("./routes/profile");
+const deletepost = require("./routes/deletepost");
 
 //GET requests
 server.get("/", home.get);
@@ -30,7 +31,7 @@ server.get("/signup", signup.get);
 server.get("/login", login.get);
 server.get("/newsfeed", middleware.checkAuth, newsfeed.get);
 server.get("/posts/:id/image", getimage.get);
-server.get("/profile", profile.get);
+server.get("/profile", middleware.checkAuth, profile.get);
 
 //POST requests
 server.post("/signup", bodyParser, signup.post);
@@ -42,7 +43,7 @@ server.post(
   imageUpload.single("image"),
   addPosts.post
 );
-// server.post("/profile", profile.post);
+server.post("/deletepost", middleware.checkAuth, bodyParser, deletepost.post);
 
 //error handling
 server.use((request, response) => {

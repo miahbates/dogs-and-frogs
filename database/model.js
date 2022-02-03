@@ -20,8 +20,6 @@ function getUser(email) {
   const SELECT_USER = `
   SELECT id, username, email, password FROM users WHERE email=$1`;
   return db.query(SELECT_USER, [email]).then((result) => {
-    console.log("result", result.rows);
-    console.log("result with 0", result.rows[0]);
     return result.rows[0];
   });
 }
@@ -66,11 +64,16 @@ function getPostImage(id) {
 
 function getProfilePosts(id) {
   const GET_PROFILE_POSTS = `
-  SELECT animal_name, type FROM posts WHERE user_id = $1
+  SELECT * FROM posts WHERE user_id = $1
   `;
   return db.query(GET_PROFILE_POSTS, [id]).then((result) => {
     return result.rows;
   });
+}
+
+function deletePost(postID) {
+  const DELETE_POST = `DELETE FROM posts WHERE id = $1`;
+  return db.query(DELETE_POST, [postID]);
 }
 
 module.exports = {
@@ -83,4 +86,5 @@ module.exports = {
   getAllposts,
   getPostImage,
   getProfilePosts,
+  deletePost,
 };

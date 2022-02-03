@@ -123,6 +123,7 @@ form > select {
   padding: 10px 50px;
   box-shadow: var(--box-shadow);
   margin: 8px;
+  text-align: center;
 }
 
 form > select:hover,

@@ -64,11 +64,14 @@ function getPostImage(id) {
   });
 }
 
-// function getProfilePosts(){
-//   const GET_PROFILE_POSTS = `
-//   SELECT * FROM posts WHERE username =
-//   `
-// }
+function getProfilePosts(id) {
+  const GET_PROFILE_POSTS = `
+  SELECT animal_name, type FROM posts WHERE user_id = $1
+  `;
+  return db.query(GET_PROFILE_POSTS, [id]).then((result) => {
+    return result.rows;
+  });
+}
 
 module.exports = {
   addPosts,
@@ -79,4 +82,5 @@ module.exports = {
   getSessionInfo,
   getAllposts,
   getPostImage,
+  getProfilePosts,
 };

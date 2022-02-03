@@ -8,9 +8,10 @@ function post(request, response) {
   model.getSessionInfo(sid).then((result) => {
     console.log("result", result);
     const id = result["user_info"].user.id;
+    const image = file.buffer;
     // console.log("username", username);
     return model
-      .addPosts(animal_name, description, type, file.buffer,id)
+      .addPosts(animal_name, description, type, image, id)
       .then(() => {
         response.redirect("/newsfeed");
       })

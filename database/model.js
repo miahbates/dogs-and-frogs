@@ -64,6 +64,8 @@ function getPostImage(id) {
   });
 }
 
+function getProfilePosts()
+
 module.exports = {
   addPosts,
   createUserDB,
@@ -73,4 +75,5 @@ module.exports = {
   getSessionInfo,
   getAllposts,
   getPostImage,
+  getProfilePosts
 };

@@ -48,7 +48,7 @@ function getAllposts() {
 }
 function addPosts(animal_name, description, type, image, id) {
   const ADD_POSTS = `
-  INSERT INTO posts (animal_name, description, type, image, id) VALUES ($1,$2,$3,$4,$5) RETURNING animal_name, description, type, image, id`;
+  INSERT INTO posts (animal_name, description, type, image, user_id) VALUES ($1,$2,$3,$4,$5) RETURNING animal_name, description, type, image, id`;
   return db
     .query(ADD_POSTS, [animal_name, description, type, image, id])
     .then((result) => {
@@ -63,6 +63,12 @@ function getPostImage(id) {
     return result.rows[0];
   });
 }
+
+// function getProfilePosts(){
+//   const GET_PROFILE_POSTS = `
+//   SELECT * FROM posts WHERE username =
+//   `
+// }
 
 module.exports = {
   addPosts,

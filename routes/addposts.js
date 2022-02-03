@@ -4,13 +4,15 @@ function post(request, response) {
   const file = request.file;
   const { animal_name, description, type } = request.body;
   // get session info
+  const image = file.buffer;
+
   const sid = request.signedCookies.sid;
   model.getSessionInfo(sid).then((result) => {
     console.log("result", result);
     const id = result["user_info"].user.id;
     // console.log("username", username);
     return model
-      .addPosts(animal_name, description, type, file.buffer,id)
+      .addPosts(animal_name, description, type, image, id)
       .then(() => {
         response.redirect("/newsfeed");
       })

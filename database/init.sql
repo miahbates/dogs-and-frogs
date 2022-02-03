@@ -35,9 +35,9 @@ INSERT INTO users (username, email, password) VALUES
   ('olij', 'oli@oli.com', '123')
 ;
 
-INSERT INTO posts (animal_name, type, description, image) VALUES
-  ('gus', 'dog', 'friendly whippet', '43435367383'),
-  ('legolas', 'frog', 'long legs', '546372829')
+INSERT INTO posts (animal_name, type, description) VALUES
+  ('gus', 'dog', 'friendly whippet'),
+  ('legolas', 'frog', 'long legs')
   
 ;
 

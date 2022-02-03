@@ -1,6 +1,7 @@
 const model = require("../database/model.js");
 
 function post(request, response) {
+  const file = request.file;
   const { animal_name, description, type } = request.body;
   // get session info
   const sid = request.signedCookies.sid;
@@ -9,7 +10,7 @@ function post(request, response) {
     const id = result["user_info"].user.id;
     // console.log("username", username);
     return model
-      .addPosts(animal_name, description, type, id)
+      .addPosts(animal_name, description, type, file.buffer,id)
       .then(() => {
         response.redirect("/newsfeed");
       })

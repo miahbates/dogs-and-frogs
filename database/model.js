@@ -71,9 +71,9 @@ function getProfilePosts(id) {
   });
 }
 
-function deletePost(postID) {
-  const DELETE_POST = `DELETE FROM posts WHERE id = $1`;
-  return db.query(DELETE_POST, [postID]);
+function deletePost(postID, userID) {
+  const DELETE_POST = `DELETE FROM posts WHERE id = $1 AND user_id = $2`;
+  return db.query(DELETE_POST, [postID, userID]);
 }
 
 module.exports = {

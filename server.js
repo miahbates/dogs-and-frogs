@@ -2,7 +2,7 @@ const express = require("express");
 const server = express();
 
 const cookieParser = require("cookie-parser");
-const bodyParser = express.urlencoded();
+const bodyParser = express.urlencoded({ extended: false });
 
 const PORT = 3000;
 

@@ -1,8 +1,13 @@
 const model = require("../database/model");
 
-function post(request, response) {
+async function post(request, response) {
   const { postID } = request.body;
-  return model.deletePost(postID).then(() => {
+  const sid = request.signedCookies.sid;
+  const user = await model.getSessionInfo(sid).then((result) => {
+    return result["user_info"].user;
+  });
+  const userId = user.id;
+  return model.deletePost(postID, userId).then(() => {
     response.redirect("/profile");
   });
 }

@@ -4,7 +4,7 @@ const server = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = express.urlencoded({ extended: false });
 
-const PORT = 3000;
+const PORT =  process.env.PORT || 3000;
 
 const staticHandler = express.static("public");
 

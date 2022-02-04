@@ -2,21 +2,25 @@ const model = require("../database/model");
 
 async function get(request, response) {
   const sid = request.signedCookies.sid;
-  const userId = await model.getSessionInfo(sid).then((result) => {
-    return result["user_info"].user.id;
+  const user = await model.getSessionInfo(sid).then((result) => {
+    return result["user_info"].user;
   });
 
+  const userId = user.id;
+  const username = user.username;
   const profilePosts = await model.getProfilePosts(userId).then((result) => {
     return result;
   });
 
+  let profileName = "";
+
   const allListElems = profilePosts.map((post) => {
     return `<li class="post"><div class="space-between"><h3>${post["animal_name"]}</h3><p id="animal-type">${post.type}</p></div>
-    <img id="img-post" src="/posts/${post.id}/image" alt="A ${post.type} called ${post["animal_name"]}">
-    <p>${post.description}</p>
+    <div class="column"><img id="img-post" src="/posts/${post.id}/image" alt="A ${post.type} called ${post["animal_name"]}"></div>
+    <p>${post.description}
     <form action="/deletepost" method="POST">
     <input type="hidden" name="postID" value="${post.id}"/>
-    <button type="submit">Delete</button>
+    <button class="link" id="remove" type="submit">Delete<span class="far fa-trash-alt"></span></button>
     </form>
     </li>`;
   });
@@ -42,12 +46,13 @@ async function get(request, response) {
   <section>
     <form action="/signout" method="POST" id="log-out">
       <button class="link" type="submit" id="log-out" >Log Out</button>
+      <a class="link" href="/newsfeed" id="newsfeed">Newsfeed</a>
     </form>
     </section>
     <section class="column">
     <img src="../images/logo.png" alt="dog and frog logo" id="logo">
       <h1>Dogs and Frogs</h1>
-      <h2>Your profile</h2>
+      <h2>Profile - ${username}</h2>
       <section id="post">
       <ul class="column" id="post-ul">${allListElems}</ul>
     </section>

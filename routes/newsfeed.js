@@ -14,7 +14,7 @@ async function get(request, response) {
         post["animal_name"]
       }</h3><p id="animal-type">${post.type}</p></div>${
         post.image
-          ? `<img id="img-post" src="/posts/${post.id}/image" alt="A ${post.type} called ${post["animal_name"]}">`
+          ? `<div class="column"><img id="img-post" src="/posts/${post.id}/image" alt="A ${post.type} called ${post["animal_name"]}"></div>`
           : ""
       } <p>${post.description}</p></li>`;
     })
@@ -46,14 +46,14 @@ async function get(request, response) {
   <section>
     <form action="/signout" method="POST" id="log-out">
       <button class="link" type="submit" id="log-out" >Log Out</button>
-    </form>
-    </section>
-      <section>
       <a class="link" href="/profile" id="profile">Profile</a>
+    </form>
     </section>
     <section class="column">
     <img src="../images/logo.png" alt="dog and frog logo" id="logo">
       <h1>Dogs and Frogs</h1>
+   
+      <h2>Newsfeed</h2>
       <form action="/newsfeed" id="filter_animals" method="POST">
       <label for="frogs">Frogs</label>
       <input type="radio" class='choice' id="frogs" name="type" value='frog' />
@@ -62,7 +62,6 @@ async function get(request, response) {
       <label for="all_animals">All animals</label>
       <input type="radio" class='choice' id="all_animals" name='type' value='all_animals' checked/>
       </form>
-      <h2>Newsfeed</h2>
       <p>Share your posts with us!</p>  
      
 
@@ -76,16 +75,16 @@ async function get(request, response) {
         </optgroup>
       </select>
 
-      <label for="image">Add image</label>
-      <input id="image" type="file" name="image" />
-
-
 
 <label for="animal_name">Animal name</label>
 <input type="text" name="animal_name" id="description" required />
 
 <label for="description">Description</label>
 <input type="text" name="description" id="description" required />
+
+<label for="image">Add image</label>
+<input id="image" type="file" name="image" />
+
 
       <button class="link add-post">Add post!<span class="fas fa-plus"></span></button>
     </form>

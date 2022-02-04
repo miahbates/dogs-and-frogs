@@ -2,10 +2,12 @@ const model = require("../database/model");
 
 async function get(request, response) {
   const sid = request.signedCookies.sid;
-  const userId = await model.getSessionInfo(sid).then((result) => {
-    return result["user_info"].user.id;
+  const user = await model.getSessionInfo(sid).then((result) => {
+    return result["user_info"].user;
   });
 
+  const userId = user.id;
+  const username = user.username;
   const profilePosts = await model.getProfilePosts(userId).then((result) => {
     return result;
   });
@@ -50,7 +52,7 @@ async function get(request, response) {
     <section class="column">
     <img src="../images/logo.png" alt="dog and frog logo" id="logo">
       <h1>Dogs and Frogs</h1>
-      <h2>Profile</h2>
+      <h2>Profile - ${username}</h2>
       <section id="post">
       <ul class="column" id="post-ul">${allListElems}</ul>
     </section>

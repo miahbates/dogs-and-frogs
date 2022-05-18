@@ -4,7 +4,7 @@
 
 *Co-authored with  [Juliette](https://github.com/julietteorpen), [Oli](https://github.com/duckRabbitPy) and [Adam](https://github.com/adam8-9).*
 
-A place for to post about your beloved dogs and frogs!
+A place for to post about your beloved dogs and frogs! 
 
 ## Team members
 * Scrum Facilitator - Juliette

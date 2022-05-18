@@ -1,13 +1,21 @@
-# week4_team1
-Oli, Adam, Miah and Juliette
+# [Founders and Coders](https://www.foundersandcoders.com/) (apprenticeship) 
 
-A place for to post about dogs and frogs!
+## Dogs and Frogs! 🐶 🐸
 
-[*Deployed version here!*](https://frog-or-dog-app.herokuapp.com/)✨
+*Co-authored with  [Juliette](https://github.com/julietteorpen), [Oli](https://github.com/duckRabbitPy) and [Adam](https://github.com/adam8-9).*
 
-## How to install
-* Git clone https://github.com/fac-23/week4_team1
-* Run command `npm install` in terminal
+A place for to post about your beloved dogs and frogs!
+
+## Team members
+* Scrum Facilitator - Juliette
+* UX Design - Miah
+* DevOps - Adam
+* Quality Assurance - Oli
+
+## How to install 🛠️
+* `git clone https://github.com/miahbates/dogs-and-frogs`
+* run `npm install` in your terminal to install the dependencies.
+* run `npm run dev` in your terminal to start the server.
 
 ## Local Database Setup
 * run `./scripts/create_db <name of your local database>`
@@ -18,9 +26,10 @@ A place for to post about dogs and frogs!
 * To start sever run command `npm run dev`
 * For cypress testing run command `npm run test`
 
-Access locally on[localhost:3000](http://localhost:3000/)
+Access locally on [localhost:3000](http://localhost:3000/)
 
-## Core User stories
+## User Stories :busts_in_silhouette:
+### Core User stories
 - [x] When I'm logged in, I want to see a newsfeed of dogs and frogs.
 - [x] I want an app that uploads an image to a site.
 - [x] As a user, I want my information to be secure and safe.
@@ -28,10 +37,8 @@ Access locally on[localhost:3000](http://localhost:3000/)
 - [x] I want to be able to delete my own posts
 - [x] I want to be able to log in
 - [x] I want to be able filter for dogs and frogs
-- [ ] I want to be able to comment on other people's profiles 
-- [ ] I want to be able to log in via Github (stretch)
-
-## Acceptance Criteria
+- [x] I want to be able to comment on other people's profiles 
+### Acceptance Criteria
 - [x] Forms for users to sign up and log in
 - [x] A form for users to submit data only accessible to logged in users
 - [x] A page showing all the data
@@ -47,63 +54,33 @@ Access locally on[localhost:3000](http://localhost:3000/)
 - [ ] Validate user-submitted data on the server (some more to be done..)
 - [x] Handle errors and inform the user
 - [x] Styled appropriately
-
-## Stretch Criteria
+### Stretch
+- [ ] I want to be able to log in via Github 
 - [ ] I want to be able to comment on other people's profiles 
 - [ ] GitHub Actions CI setup to run your tests when you push
 - [ ] I want to be able to log in via Github
 
-## Roles:
-- DevOps: Adam
-- QA: Oli
-- UX Design: Miah
-- Scrum Facilitator: Juliette
+## Features: 🌟
+* Authentication implemeneted. 
+* Profile page. 
+* Able to filter for dogs or frogs.
+* Image upload feature.
 
-## Database:
-- Databased named: petdb
+## Learning 🌱
+* We can build a stable, professional app
+* We can handle errors without our server crashing
+* We can communicate problems to the user
+* We can research and implement complex new features on our own
 
-## Routes:
-- Homepage - with log in and sign up buttons
-- Log in - for existing users, redirects to newsfeed
-- Sign up - for new users, redirects to newsfeed
-- Newsfeed - collection of upoaded images
-- Profile - individual user's profile and form to upload images
-- Sign out - takes you back to homepage
-- Delete post - for users to delete their posts
-- 404 - error page
+## Improvements and future ideas ✨
+* Host on Heroku.
+* Be able to like posts on homepage.
+* Implement github actions to automate tests.
 
-## File architecture:
-Cypress
-- testing files
 
-Public folder 
--  CSS
--  Images 
 
-Scripts
-- create_DB
-- populate_DB
 
-Database
-- Init sql file
-- model.js
-- connection.js
 
-Root folder
-- auth.js
-- server.js
-- .env
-- .gitignore
-- Procfile
-
-Routes folder
-- files listed above
-
-## Posts will include: 
- - name of user 
- - image
- - description
- - kind (frog/dog)
 
 
 

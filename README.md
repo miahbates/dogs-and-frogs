@@ -6,6 +6,8 @@
 
 A place for to post about your beloved dogs and frogs! 
 
+<img width="1416" alt="Screenshot 2022-04-24 at 01 39 50" src="https://user-images.githubusercontent.com/78933903/175790178-5f7414a5-f623-4e91-a80d-e6883d4670ac.png">
+
 ## Team members
 * Scrum Facilitator - Juliette
 * UX Design - Miah
